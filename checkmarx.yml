@@ -1,0 +1,5 @@
+CX_CMDB: 00123456789
+SAST_ENABLED: true
+SCA_ENABLED: true
+SCA_custom_exclude: 
+BREAK_BUILD: true

@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  call-codeguard-workflow:
+    uses: Sanofi-Shared-GitHub-Apps/cyber-AST-Action_reusable/.github/workflows/code_guard_ast_summary.yml@main
+    with:
+      production-branch: 'main'
+      groups: 'Sanofi-Testing'
+      cmdb: "test"
+#      file-filter: '!subfolder'
+    secrets:
+      DOCKER_AUTH_CONFIG: ${{ secrets.DOCKER_AUTH_CONFIG }}
+      DOCKER_AUTH_ID:  ${{ secrets.DOCKER_AUTH_ID }}
+      CX_CLIENT_ID: ${{ secrets.CX_CLIENT_ID }}
+      CX_CLIENT_SECRET: ${{ secrets.CX_CLIENT_SECRET }}
+      CX_CLIENT_AUTH_ID: ${{ secrets.CX_CLIENT_AUTH_ID }}
+      CX_CLIENT_AUTH_SECRET: ${{ secrets.CX_CLIENT_AUTH_SECRET }}
+
+  call-generate-wiki-result:
+    needs: [call-codeguard-workflow]
+    uses: Sanofi-Shared-GitHub-Apps/cyber-AST-Action_reusable/.github/workflows/push_result_to_wiki.yml@main
+
