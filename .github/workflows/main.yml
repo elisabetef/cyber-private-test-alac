@@ -17,4 +17,4 @@ jobs:
           cx_tenant: ${{ secrets.TENANT }}
           cx_client_id: ${{ secrets.CX_CLIENT_ID }}
           cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
-          additional_params: --sast-filter !**/subfolder/**  --scan-types sast
+          additional_params: --sast-filter !**/subfolder/**  --scan-types sast --sca-exploitable-path true
