@@ -1,4 +1,5 @@
 
+
 # CodeGuard Scan Report    ![img](https://img.shields.io/badge/SCA%20-%20NO%20vuln.%20found-green.svg)  ![img](https://img.shields.io/badge/SAST%20-%203%20HIGH%20vuln.%20found-red.svg)
 # Project: Sanofi-Shared-GitHub-Apps/cyber-private-test-alac
 __Source:__ zip   --   __Branch:__ main
